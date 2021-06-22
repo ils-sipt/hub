@@ -74,4 +74,4 @@ defaults:
       lang: "fr"
 
 title: "GCWeb Jekyll" # Site name or title
-theme: jekyll-theme-gcweb
+theme: jekyll-theme-cayman
