@@ -1,78 +1,77 @@
-{%- include variable-core.liquid -%}
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8"/>
-		<title>{{ page.title }}</title>
-		<link rel="schema.dcterms" href="http://purl.org/dc/terms/" />
-		<meta content="width=device-width, initial-scale=1" name="viewport" />
-		<meta name="description" content="{{ page.description-en }}" />
-		<meta name="dcterms.description" content="{{ page.description-en }}" />
-		<meta name="dcterms.creator" content="{{ page.creator-en }}" />
-		<meta name="dcterms.title" content="{{ page.title }}" />
-		<meta name="dcterms.issued" title="W3CDTF" content="{{ page.dateIssued }}" />
-		<meta name="dcterms.modified" title="W3CDTF" content="{{ page.dateModified }}" />
-		<meta name="dcterms.subject" content="{{ page.subject-en }}" />
-		<meta name="dcterms.language" title="ISO639-2" content="eng" />
-		<meta name="robots" content="noindex, follow" />
+---
+title: Creation de page web
+description: Comment créer une page avec le thème gcweb-jekyll
+lang: fr
+dateModified: 2021-06-15
+---
 
-		<meta property="dcterms:issued" content="{{ page.dateIssued }}">
-		<meta property="dcterms:modified" content="{{ page.dateModified }}">
-		<meta property="dcterms:title" lang="en" content="{{ page.title }}" />
-		<meta property="dcterms:creator" lang="en" content="{{ page.creator-en }}">
-		<meta property="dcterms:subject" lang="en" title="gccore" content="{{ page.subject-en }}" />
-		<meta property="dcterms:description" lang="en" content="{{ page.description-en }}" />
-		<meta property="dcterms:title" lang="fr" content="{{ page.title }}" />
-		<meta property="dcterms:creator" lang="fr" content="{{ page.creator-fr }}">
-		<meta property="dcterms:subject" lang="fr" title="gccore" content="{{ page.subject-fr }}" />
-		<meta property="dcterms:description" lang="fr" content="{{ page.description-fr }}" />
-		{% include resources-inc/head.html %}
-		<link rel="stylesheet" href="{{ setting-resourcesBasePathTheme }}/css/messages{{ setting-minifiedSuffix }}.css" />
-	</head>
+<h2>Paramètres de la page</h2>
 
-	<body class="splash" vocab="http://schema.org/" resource="#wb-webpage" typeof="WebPage">
-		<div id="bg" data-wb-randomize='{ "shuffle": true, "selector": "img", "toggle": "hide" }'>
-			<img class="hide" src="https://www.canada.ca/content/dam/canada/splash/sp-bg-1.jpg" alt="" />
-			<img class="hide" src="https://www.canada.ca/content/dam/canada/splash/sp-bg-2.jpg" alt="" />
-			<img class="hide" src="https://www.canada.ca/content/dam/canada/splash/sp-bg-3.jpg" alt="" />
-			<img class="hide" src="https://www.canada.ca/content/dam/canada/splash/sp-bg-4.jpg" alt="" />
-			<img class="hide" src="https://www.canada.ca/content/dam/canada/splash/sp-bg-5.jpg" alt="" />
-			<img class="hide" src="https://www.canada.ca/content/dam/canada/splash/sp-bg-6.jpg" alt="" />
-			<img class="hide" src="https://www.canada.ca/content/dam/canada/splash/sp-bg-7.jpg" alt="" />
-			<img class="hide" src="https://www.canada.ca/content/dam/canada/splash/sp-bg-8.jpg" alt="" />
-			<img class="hide" src="https://www.canada.ca/content/dam/canada/splash/sp-bg-9.jpg" alt="" />
-			<img class="hide" src="https://www.canada.ca/content/dam/canada/splash/sp-bg-10.jpg" alt="" />
-			<img class="hide" src="https://www.canada.ca/content/dam/canada/splash/sp-bg-11.jpg" alt="" />
-			<img class="hide" src="https://www.canada.ca/content/dam/canada/splash/sp-bg-12.jpg" alt="" />
-		</div>
-		<main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
-			<div class="sp-hb">
-				<div class="sp-bx col-xs-12">
-					<h1 property="name" class="wb-inv">{{ page.title }}</h1>
-					<div class="row">
-						<div class="col-xs-11 col-md-8" property="publisher" resource="#wb-publisher" typeof="GovernmentOrganization">
-							<img src="{{ setting-resourcesBasePathTheme }}/assets/sig-spl.svg" width="283" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
-							<meta property="name" content="Government of Canada" />
-							<meta property="name" lang="fr" content="Gouvernement du Canada"/>
-							<meta property="areaServed" typeof="Country" content="Canada" />
-						</div>
-					</div>
-					<div class="row">
-						{{ content }}
-					</div>
-				</div>
-				<div class="sp-bx-bt col-xs-12">
-					<div class="row">
-						<div class="col-xs-7 col-md-8">
-							<a href="https://www.canada.ca/en/transparency/terms.html" class="sp-lk">Terms and conditions</a> <span class="glyphicon glyphicon-asterisk"></span> <a href="https://www.canada.ca/fr/transparence/avis.html" class="sp-lk" lang="fr">Avis</a>
-						</div>
-						<div class="col-xs-5 col-md-4 text-right mrgn-bttm-md">
-							<img src="{{ setting-resourcesBasePathTheme }}/assets/wmms-spl.svg" width="127" alt="Symbol of the Government of Canada" /><span class="wb-inv"> / <span lang="fr">Symbole du gouvernement du Canada</span></span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</main>
-		{% include resources-inc/footer.html %}
-	</body>
-</html>
+<p>Seul un titre est requis, mais il est préférable de définir les paramètres suivants au minimum:</p>
+
+<dl>
+  <dt><code>title</code></dt>
+  <dd>Titre de la page web</dd>
+  <dt><code>description</code></dt>
+  <dd>Description de la page</dd>
+  <dt><code>lang</code></dt>
+  <dd>Langue de la page courant en format ISO, tel que "en", "fr".</dd>
+  <dt><code>altLangPage</code></dt>
+  <dd>Lien vers la page alternative dans l'autre langue officiel.</dd>
+  <dt><code>dateModified</code></dt>
+  <dd>Date de modification de la page en format ISO, AAAA-MM-JJ.</dd>
+</dl>
+
+<p>Si le paramètre <code>altLangPage</code> est omis, le liens vers la page alternative ne sera pas ajouter dans le coin supérieur droit.</p>
+
+<p>Définir le type de gabarit (<span lang="en">layout</span>) à utiliser.</p>
+<dl>
+  <dt><code>layout: default</code></dt>
+  <dd>Gabarit de base et utilisé majoritairement pour la création de page de contenu. Ce paramètre est requis lorsqu'il n'est pas défini comme paramètre par défaut dans la configuration du site. (<code>_config.yml</code>)</dd>
+  <dt><code>layout: fluid</code></dt>
+  <dd>Gabarit de base mais avec un contenu fluide. Toute la largeur de la page sera utilisable.</dd>
+  <dt><code>layout: no-container</code></dt>
+  <dd>Gabarit de base mais avec aucun conteneur de défini ni de titre de niveau 1. Ce gabarit assume que le titre de niveau 1 ainsi que l'une ou l'autre des class CSS délimitant le contenu sera ajouté par l'éditeur web. Les classes CSS de délimitation de contenu possible sont: <code>container</code> et <code>container-fluid</code>un contenu fluide.</dd>
+  <dt><code>layout: without-h1</code></dt>
+  <dd>Gabarit de base mais avec sans titre de niveau 1. L'éditeur web devra l'ajouté directement dans le contenu de la page web.</dd>
+</dl>
+
+<p>Les paramètres suivant sont optionnel mais disponible au besoin</p>
+
+<dl>
+  <dt><code>titleH1</code></dt>
+  <dd>Si définie, ce texte sera utilisé pour le titre du niveau 1 de la page et l'autre paramètre <code>title</code> sera utilisé pour nommé la page web.</dd>
+  <dt><code>nositesearch</code></dt>
+  <dd>Valeur Booléenne, lorsqu'ajouter avec une valeur "vrai", la recherche de la page, en haut à droite, ne sera pas ajouté.</dd>
+  <dt><code>nomenu</code></dt>
+  <dd>Valeur Booléenne, lorsqu'ajouter avec une valeur "vrai", le menu prinicipal ne sera pas ajouté.</dd>
+  <dt><code>pageType</code></dt>
+  <dd>Définie le type de la page, s'il contient la valeur "archived", la bannière d'archive sera ajouté à la page. (Note technique: prendre en considération d'utilisé une propriété nommé "state" à la place)</dd>
+  
+  
+   <dt><code>breadcrumbs</code></dt>
+  <dd>
+    <p>Liste contenant un item du fil d'ariane. Chaque item est composé d'un objet avec les propriétés suivantes:</p>
+    <dl class="dl-horizontal">
+      <dt><code>link</code></dt>
+      <dd>Liens de l'item du fil d'ariane</dd>
+      <dt><code>title</code></dt>
+      <dd>Titre de l'item du fil d'ariane</dd>
+    </dl>
+    
+    <p>L'ordre du fil d'ariane configuré vas du parents vers l'enfant.</p>
+  </dd>
+</dl>
+  
+
+<h2>Language de codification de la page</h2>
+ 
+<p>Les paramètres de la page (<span lang="en">Front-matter</span>) peut être codifié en format YML ou en format JSON.</p>
+<p>Le contenu de la page peut être codé avec en mark down ou en html. Le language du contenu est définie par l'extension du fichier éditié. Par example, l'extension <code>.md</code> indique que le contenu de la page est en format "mark down" et l'extension <code>.html</code> indique que le contenu de la page est en format "HTML".</p>
+
+<h2>Ressource additionelle</h2>
+
+<ul>
+  <li><a href="https://github.com/wet-boew/gcweb-jekyll-website">Site web squelettique d'example d'utilisation du thème Jekyll de Canada.ca</a></li>
+  <li><a href="https://jekyllrb.com/docs/variables/#page-variables" hreflang="en">List des paramètres de pages disponible et géré par Jekyll (En anglais seulement)</a></li>
+</ul>
